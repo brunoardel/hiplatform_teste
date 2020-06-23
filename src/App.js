@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import dataJson from "./data.json";
+import TreeView from "./components/treeview";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const prevData = JSON.parse(localStorage.getItem("state"));
+
+  const renderApp = () => {
+    return (
+      <div className="container">
+        <TreeView data={prevData || dataJson} />
+      </div>
+    );
+  };
+
+  return renderApp();
+};
 
 export default App;
